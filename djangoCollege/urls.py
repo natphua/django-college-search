@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from collegeStats.views import result, get_college
+from collegeStats.views import result, get_college, error_500
+
+
+handler500 = error_500
 
 # attaches a view to a certain url
 urlpatterns = [

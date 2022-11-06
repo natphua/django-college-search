@@ -1,0 +1,14 @@
+{% extends 'collegeStats/main.html' %}
+{% block content %}
+
+<head>
+    <h2> Invalid college name entered. </h2>
+    <p> Examples of valid names: "Harvard University, University of Chicago" </p>
+</head>
+
+<div>
+    <a href="{% url 'home' %}"> Search again </a>
+</div>
+
+
+{% endblock content %}

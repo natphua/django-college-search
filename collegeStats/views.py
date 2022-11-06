@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from .config import api_key
 import requests
 import json
 
@@ -28,9 +29,9 @@ def result(request):
     params_ = {     # for retrieving info from api
         'college_ids': college_name.replace(' ', '-'),
         'info_ids': 'location,out-of-state-tuition,acceptance-rate,is-private,colors,'
-                    'rankings_best_colleges_for_computer_science,total-applicants,total_enrolled,campus_image',
+                    'rankings_best_colleges_for_computer_science,total-applicants,total_enrolled,campus_image'
     }
-    r = requests.get('https://api.collegeai.com/v1/api/college/info?api_key=f5d8b47d416893d730414cdd96', params_)
+    r = requests.get('https://api.collegeai.com/v1/api/college/info?api_key=' + api_key, params_)
     college_data = json.loads(r.content)['colleges'][0]
     acceptance_rate = str(round(college_data['acceptanceRate'] * 100, 2)) + '%'
     ranking = f"{college_data['rankingsBestCollegesForComputerScience']['value']} out of {college_data['rankingsBestCollegesForComputerScience']['total']}"
@@ -44,7 +45,12 @@ def result(request):
         'appl': college_data['totalApplicants'],
         'enrolled': college_data['totalEnrolled'],
         'image_url': college_data['campusImage'],
-        'success': college_data,
     }
     return render(request, 'collegeStats/result.html', context)
+
+
+def error_500(request):
+    context = {}
+    return render(request, 'collegeStats/500.html', context)
+
 

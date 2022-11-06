@@ -2,16 +2,21 @@
 {% block content %}
 
 <div>
-    <meta charset="UTF-8">
     <h1> College Info </h1>
-    <div>
-        <form action="" method="POST">
-            {% csrf_token %}  <! django security measure >
-            {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-    </div>
 </div>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}  <! django security measure >
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div>
+    <p> Enter the name of the college you would like to learn more about. </p>
+</div>
+
 
 
 {% endblock content %}
