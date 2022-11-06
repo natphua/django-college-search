@@ -1,0 +1,31 @@
+{% extends 'collegeStats/main.html' %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <h1> College Info: {{ name }} </h1>
+</head>
+
+<div>
+    <body>
+        <p> Tuition (out of state): {{ tuition }} </p>
+        <p> Location: {{ location }} </p>
+        <p> Acceptance Rate: {{ acceptance_rate }} </p>
+        <p> Total Applicants: {{ appl }} </p>
+        <p> Total Enrolled: {{ enrolled }} </p>
+        <p> Private: {{ private }} </p>
+        <p> Ranking for Computer Science: {{ ranking }} </p>
+        <p> Success: {{ success }} </p>
+    </body>
+</div>
+
+<div>
+    <img src="{{ image_url }}" alt="campus image">
+</div>
+
+<div>
+    <a href="{% url 'home' %}"> Search for More </a>
+</div>
+
+
+{% endblock content %}
